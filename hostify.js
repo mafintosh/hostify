@@ -2,9 +2,7 @@
 
 var fs = require('fs');
 var net = require('net');
-var common = require('common');
 
-var noop = function() {};
 var argv = process.argv;
 var socks = {};
 
@@ -24,7 +22,10 @@ try {
 } catch(err) {}
 
 var updateSocks = function() {
-	fs.readdir(dir, common.fork(noop, function(files) {
+	fs.readdir(dir, function(err, files) {
+		if (err) {
+			return;
+		}
 		var tmp = {};
 		var invalid = /([\.\+\(\)\[\]\{\}\/\\\?])/g;
 		
@@ -37,7 +38,7 @@ var updateSocks = function() {
 		});
 		
 		socks = tmp;
-	}));
+	});
 };
 
 updateSocks();
