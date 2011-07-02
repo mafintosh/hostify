@@ -1,11 +1,12 @@
 var http = require('http');
 
-http.createServer(function(request, response) {
-	response.writeHead(200);
-	response.end('helloish\n');
-}).listen('/tmp/hostify/local.kkloud.com.sock');
+/*
+	1. run 'hostify --port 8080'
+	2. run this example
+	3. Goto your browser and open http://localhost:8080/
+*/
 
 http.createServer(function(request, response) {
 	response.writeHead(200);
-	response.end('hello from '+request.headers.host+'\n');
-}).listen('/tmp/hostify/*.local.kkloud.com.sock');
+	response.end('helloish\n');
+}).listen('/tmp/hostify/localhost.sock');
