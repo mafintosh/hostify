@@ -1,5 +1,5 @@
 # Hostify
-Hostify is a small program written with [node.js](http://nodejs.org) that allows for multiple servers to listen on the same port based on their hostname.  
+Hostify is a small [node.js](http://nodejs.org) module that allows multiple apps to run on the same server.  
 First run hostify:
 
 	./hostify
