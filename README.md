@@ -14,7 +14,7 @@ require('http').createServer(function(request, response) {
 }).listen('/tmp/hostify/example.com.sock'); 
 ```
 
-You can also use dns wildcards
+You can also use `dns` wildcards
 
 ```js
 // hostify will forward all requests to *.example.com to this server (fx foo.example.com)
