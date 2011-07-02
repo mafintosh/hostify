@@ -2,7 +2,7 @@
 Hostify is a small [node.js](http://nodejs.org) module that allows multiple apps to run on the same server.  
 First run hostify:
 
-	./hostify
+	./hostify.js
 
 This creates a server on port `80` which forwards requests to unix sockets listening in `/tmp/hostify` based on the `Host` header in the `http` request.
 
