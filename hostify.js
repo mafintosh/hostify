@@ -43,7 +43,17 @@ var updateSocks = function() {
 
 updateSocks();
 
-fs.watchFile(dir, updateSocks);
+var m = Date.now();
+
+setInterval(function() {	
+	fs.stat(dir, function(err, stat) {
+		if (stat.mtime.getTime() <= m) {
+			return;
+		}
+		m = stat.mtime.getTime();
+		updateSocks();
+	});
+}, 250);
 
 var server = net.createServer(function(socket) {
 	var buffers = [];
@@ -85,6 +95,10 @@ var server = net.createServer(function(socket) {
 	};
 	
 	socket.on('data', ondata);
+});
+
+process.on('uncaughtException', function(err) {
+	console.log(err.stack);
 });
 
 server.listen(port);
