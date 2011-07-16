@@ -87,7 +87,12 @@ var server = net.createServer(function(socket) {
 		}
 		for (var sock in socks) {
 			if (socks[sock].test(match[1])) {
-				pipe(net.createConnection(dir+sock));
+				var con = net.createConnection(dir+sock);
+				
+				con.on('error', function(err) {
+					console.log('connection error: ' + dir+sock);
+				});
+				pipe(con);
 				return;
 			}
 		}
